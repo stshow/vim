@@ -19,18 +19,18 @@ sleep 2
 backup(){
     if [ -d ~/.vim ] && [ -f ~/.vimrc ]; then
         mkdir ${DIR}
-	    mv ~/.vim ${DIR}/vim
-	    mv ~/.vimrc ${DIR}/vimrc
-	    cd ${DIR}
+        mv ~/.vim ${DIR}/vim
+        mv ~/.vimrc ${DIR}/vimrc
+        cd ${DIR}
         tar cvzf /tmp/${BACKUPFILE} ${DIR}/* &> /tmp/vim-backup-$(date +%R%p).log
-	    echo -en '\nBacking up your current configs...\n\n'
+        echo -en '\nBacking up your current configs...\n\n'
         echo  "Check here: /tmp/${BACKUPFILE}"
         BACKUP_STATUS=True
     elif [ ! -d ~/.vim ] && [ -f ~/.vimrc ]; then
         mkdir ${DIR}
-	    mv ~/.vimrc ${DIR}/vimrc
-	    cd ${DIR}
-	    tar cvzf /tmp/${BACKUPFILE} ${DIR}/* &> /tmp/vim-backup-$(date +%R%p).log
+        mv ~/.vimrc ${DIR}/vimrc
+        cd ${DIR}
+        tar cvzf /tmp/${BACKUPFILE} ${DIR}/* &> /tmp/vim-backup-$(date +%R%p).log
         echo -en '\nBacking up your current configs...\n'
         BACKUP_STATUS=True
     else
@@ -41,6 +41,9 @@ backup(){
 }
 
 provision(){
+    if [ ! -d ${DIR} ]; then
+	mkdir ${DIR}
+    fi
     cd ~
     wget https://github.com/sadsfae/misc-dotfiles/raw/master/vimfiles.tar
     tar -xvf vimfiles.tar &> ${DIR}/vim-deploy-$(date +%s).log
