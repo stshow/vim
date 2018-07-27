@@ -50,6 +50,7 @@ provision(){
     sed -i 's/set textwidth=80/set textwidth=0/g' ~/.vimrc
     sed -i 's/hi comment guifg/\"\" hi comment guifg/g' ~/.vimrc
     echo "set mouse=a clipboard=autoselect" >> ~/.vimrc
+    echo "nnoremap <F10> <Bar>:g/^$/d<Bar><CR>" >> ~/.vimrc
     echo -en '\nRun the following inside of VIM to finish:\n\n:PlugClean\n:PlugInstall\n:PlugUpdate\n'
     echo -en '\nSetting your default editor to VIM\n'
     git config --global core.editor /usr/bin/vim
