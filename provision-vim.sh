@@ -1,7 +1,7 @@
 #!/bin/bash
 ## This is a script to quickly provision Vim config from hobo.house.
 ## Original post: https://hobo.house/2016/04/09/trick-out-your-vim-editor/
-## Vim GTK is important for keyboard copy paste on Ubuntu / Debian distros.
+## Vim GTK is important for clipboard copy paste on Ubuntu / Debian distros.
 
 #if [ -f /usr/bin/apt ]; then
 #    sudo apt install git vim vim-gtk -y
